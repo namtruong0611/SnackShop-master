@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="410dp"
+    android:layout_height="160dp"
+    >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            >
+         <TextView
+             android:padding="5dp"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Mã Hóa Đơn : "
+             >
+         </TextView>
+            <TextView
+                android:id="@+id/HD_ma"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1  "
+                >
+            </TextView>
+        </LinearLayout>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên Thành Viên : "
+                >
+            </TextView>
+            <TextView
+                android:id="@+id/HD_ThanhVien"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tạ Nam Trường  "
+                >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sản Phẩm : "
+                >
+            </TextView>
+            <TextView
+
+                android:id="@+id/HD_TenSP"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lays "
+                >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/HD_del"
+        android:layout_width="43dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/baseline_delete_24"></ImageView>
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng Tiền : "
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/HD_TongTien"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5000"
+            >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày Mua : "
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/HD_NgayMua"
+            android:padding="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22/12/2022"
+            >
+        </TextView>
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

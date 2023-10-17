@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="8dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:layout_marginTop="7dp"
+        android:id="@+id/DAL_SP_ma"
+        android:hint="Ma"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </EditText>
+<EditText
+    android:layout_marginTop="7dp"
+    android:id="@+id/DAL_SP_ten"
+    android:hint="ten"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+</EditText>
+
+    <EditText
+        android:layout_marginTop="7dp"
+        android:id="@+id/DAL_SP_gia"
+        android:hint="Gia"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </EditText>
+    <Spinner
+        android:id="@+id/DAL_SP_spin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </Spinner>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="save"
+            android:layout_marginRight="50dp"
+            android:id="@+id/btn_sp_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Button>
+        <Button
+            android:text="cancle"
+            android:layout_marginLeft="50dp"
+            android:id="@+id/btn_sp_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Button>
+    </LinearLayout>
+</LinearLayout>

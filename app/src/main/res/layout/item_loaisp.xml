@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="8dp"
+    android:orientation="vertical"
+    android:layout_width="410dp"
+    android:layout_height="100dp">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_width="350dp"
+                android:layout_height="35dp">
+                <TextView
+                    android:gravity="center"
+                    android:text="Mã loại : "
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp">
+
+                </TextView>
+                <TextView
+                    android:gravity="center"
+                    android:text="1 "
+                    android:id="@+id/LSP_ma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp">
+
+                </TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_width="350dp"
+                android:layout_height="35dp">
+                <TextView
+                    android:gravity="center"
+                    android:text="Tên loại : "
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp">
+
+                </TextView>
+                <TextView
+                    android:gravity="center"
+                    android:text="lays"
+                    android:id="@+id/LSP_ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp">
+
+                </TextView>
+            </LinearLayout>
+
+        </LinearLayout>
+        <ImageView
+            android:layout_gravity="center"
+            android:src="@drawable/baseline_delete_24"
+            android:id="@+id/LSP_del"
+            android:layout_width="50dp"
+            android:layout_height="50dp"></ImageView>
+    </LinearLayout>
+
+
+</LinearLayout>

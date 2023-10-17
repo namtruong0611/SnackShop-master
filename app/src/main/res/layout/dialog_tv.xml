@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="10dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/DAL_TV_ma"
+        android:hint="ma"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </EditText>
+    <EditText
+        android:id="@+id/DAL_TV_ten"
+        android:hint="Tên"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </EditText>
+    <EditText
+        android:drawableEnd="@drawable/calendar"
+        android:id="@+id/DAL_TV_namsinh"
+        android:hint="Năm sinh "
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+    </EditText>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_marginRight="50dp"
+            android:id="@+id/btn_tv_save"
+            android:text="SAVE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Button>
+        <Button
+            android:layout_marginLeft="50dp"
+            android:id="@+id/btn_tv_cancle"
+            android:text="Cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Button>
+    </LinearLayout>
+</LinearLayout>
