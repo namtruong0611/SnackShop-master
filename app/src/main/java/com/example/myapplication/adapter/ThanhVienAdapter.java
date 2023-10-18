@@ -33,9 +33,9 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.Than
     public ThanhVienAdapter (Context context ){this.context = context ;}
     public  void  setDATA (ArrayList<ThanhVien>arrayList ){
         this.arrayList = arrayList ;
-        notifyDataSetChanged();
-        thanhVienDAO = new ThanhVIenDAO(context);
 
+        thanhVienDAO = new ThanhVIenDAO(context);
+        notifyDataSetChanged();
 
     }
     @NonNull
@@ -52,9 +52,9 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.Than
         if (thanhVien == null){
             return;
         }
-        holder.ma.setText("Mã thành  viên  : " + thanhVien.getMaTv());
-        holder.ten.setText("Tên thành  Viên : " + thanhVien.getHoTenTV());
-        holder.namsinh.setText("Năm sinh: " + thanhVien.getNamSinhTV());
+        holder.ma.setText(" " + thanhVien.getMaTv());
+        holder.ten.setText(" " + thanhVien.getHoTenTV());
+        holder.namsinh.setText("" + thanhVien.getNamSinhTV());
         holder.del.setOnClickListener(v -> {
             dialogDelete(thanhVien);
         });

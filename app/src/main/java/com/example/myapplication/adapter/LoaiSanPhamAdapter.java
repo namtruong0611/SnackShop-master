@@ -31,10 +31,8 @@ private LoaiSanPhamDAO loaiSanPhamDAO ;
 public  LoaiSanPhamAdapter(Context context){this.context = context ;}
     public  void  setDATA (ArrayList<LoaiSanPham>arrayList ){
     this.arrayList = arrayList ;
-
     loaiSanPhamDAO = new LoaiSanPhamDAO(context);
         notifyDataSetChanged();
-
     }
     @NonNull
     @Override
@@ -49,8 +47,8 @@ public  LoaiSanPhamAdapter(Context context){this.context = context ;}
     if (lsp ==null){
      return;
      }
-     holder.ma.setText("Mã Loại : " + lsp.getMaloai());
-     holder.ten.setText("Tên Loại : " + lsp.getTenloai());
+     holder.ma.setText(" " + lsp.getMaloai());
+     holder.ten.setText(" " + lsp.getTenloai());
 
         holder.del.setOnClickListener(v -> {
             dialogDelete(lsp);

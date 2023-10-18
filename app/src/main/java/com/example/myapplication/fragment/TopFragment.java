@@ -22,16 +22,19 @@ import java.util.ArrayList;
 
 
 public class TopFragment extends Fragment {
-
     private ArrayList<SanPham> list = new ArrayList<>();
     private HoaDonDAO hoaDonDAO;
     private TopAdapter adapter;
     private RecyclerView recyclerView;
     public TopFragment() {
         // Required empty public constructor
+
     }
 
-
+public  static TopFragment newIFragment(){
+    TopFragment fragment = new TopFragment();
+    return fragment;
+}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,11 +55,7 @@ public class TopFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycle_top10);
         hoaDonDAO = new HoaDonDAO(getActivity());
         list.clear();
-        try {
-            list = hoaDonDAO.top10();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        list = hoaDonDAO.top10();
         adapter = new TopAdapter(getActivity());
         adapter.setData(list);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);

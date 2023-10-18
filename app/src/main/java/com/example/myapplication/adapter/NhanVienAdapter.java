@@ -31,9 +31,9 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
     public NhanVienAdapter(Context context ){this.context = context ;}
     public  void  setDATA (ArrayList<NhanVien>arrayList ){
         this.arrayList = arrayList ;
-        notifyDataSetChanged();
-        nhanVienDAO = new NhanVienDAO(context);
 
+        nhanVienDAO = new NhanVienDAO(context);
+        notifyDataSetChanged();
 
     }
     @NonNull
@@ -49,9 +49,9 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
     if (nhanVien == null){
         return;
     }
-        holder.ma.setText("Mã Nhân viên  : " + nhanVien.getMaNV());
-        holder.ten.setText("Tên Nhân Viên : " + nhanVien.getTenNV());
-        holder.pass.setText("pass: " + nhanVien.getPass());
+        holder.ma.setText(" " + nhanVien.getMaNV());
+        holder.ten.setText(" " + nhanVien.getTenNV());
+        holder.pass.setText(" " + nhanVien.getPass());
         holder.del.setOnClickListener(v -> {
             dialogDelete(nhanVien);
         });
@@ -59,8 +59,6 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
             dialogUpdate(nhanVien);
             return true;
         });
-
-
     }
 
     @Override
@@ -112,7 +110,7 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
         EditText ed_maNV = v.findViewById(R.id.DAL_NV_ma);
         EditText ed_tenNV = v.findViewById(R.id.DAL_NV_ten);
         EditText ed_pass = v.findViewById(R.id.DAL_NV_pass);
-
+        ed_maNV.setText(nhanVien.getMaNV());
         ed_tenNV.setText(nhanVien.getTenNV());
         ed_pass.setText(nhanVien.getPass());
         builder.setView(v);

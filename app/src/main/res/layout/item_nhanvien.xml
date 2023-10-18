@@ -2,9 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     >
-
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_gravity="center_vertical"
         android:layout_width="210dp"
@@ -33,27 +36,27 @@
         </LinearLayout>
 
 
-       <LinearLayout
-           android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="Tên:"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/NV_ten"
-        android:layout_marginLeft="10dp"
-        android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Tên:"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/NV_ten"
+                android:layout_marginLeft="10dp"
+                android:textSize="20sp"
 
-        android:text="Tạ Nam Trường "/>
-</LinearLayout>
+                android:text="Tạ Nam Trường "/>
+        </LinearLayout>
 
 
 
@@ -92,4 +95,10 @@
         android:src="@drawable/baseline_delete_24" />
 
 
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_marginTop="5dp"/>
 </LinearLayout>

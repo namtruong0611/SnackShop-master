@@ -1,12 +1,22 @@
 package com.example.myapplication.model;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 public class HoaDon {
 
-    private  int maHD,maNV,maTV,maSP,TongTien;
+    private int maHD, maNV, maTV, maSP, TongTien;
     private Date NgayMua;
-    public HoaDon (){}
+
+    public HoaDon() {
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return maHD + "-" + maNV + "-" + maTV + "-" + maSP + "-" + TongTien;
+    }
 
     public HoaDon(int maHD, int maNV, int maTV, int maSP, int tongTien, Date ngayMua) {
         this.maHD = maHD;
@@ -64,4 +74,6 @@ public class HoaDon {
     public void setNgayMua(Date ngayMua) {
         NgayMua = ngayMua;
     }
+
+
 }

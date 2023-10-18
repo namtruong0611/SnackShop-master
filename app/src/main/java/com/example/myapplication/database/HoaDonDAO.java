@@ -84,8 +84,8 @@ public class HoaDonDAO {
         return 1;
     }
 
-    public ArrayList<SanPham> top10() throws ParseException {
-        Cursor cursor = database.rawQuery("SELECT SANPHAM.maSP,SANPHAM.tenSP,SANPHAM.Gia,SANPHAM.maLOAISP FROM SANPHAM JOIN HOADON ON SANPHAM.maSP=HOADON.maSP GROUP BY HOADON.maSP ORDER BY COUNT(SANPHAM.maSP)DESC LIMIT 10 ", null);
+    public ArrayList<SanPham> top10(){
+        Cursor cursor = database.rawQuery("SELECT SANPHAM.maSP,SANPHAM.tenSP,SANPHAM.Gia,SANPHAM.maLoaiSP,COUNT(SANPHAM.maSP) FROM SANPHAM JOIN HOADON ON SANPHAM.maSP=HOADON.maSP GROUP BY HOADON.maSP ORDER BY COUNT(SANPHAM.maSP) DESC LIMIT 10", null);
         ArrayList<SanPham> list = new ArrayList<>();
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
@@ -94,15 +94,13 @@ public class HoaDonDAO {
                         cursor.getString(1),
                         cursor.getInt(2),
                         cursor.getInt(3)));
-
-
             } while (cursor.moveToNext());
         }
         return list;
     }
 
     public int Doanhthu(String date1, String date2) {
-        Cursor cursor = database.rawQuery("SELECT SUM(TongTien)  FROM HOADON WHERE Ngay BETWEEN ? AND ?", new String[]{date1, date2});
+        Cursor cursor = database.rawQuery("SELECT SUM(TongTien) FROM HOADON WHERE Ngay BETWEEN ? AND ?", new String[]{date1, date2});
         int dt = 0;
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();

@@ -11,7 +11,7 @@ public class NhanVien {
     public NhanVien(String maNV, String tenNV, String pass) {
         this.maNV = maNV;
         this.tenNV = tenNV;
-        Pass = pass;
+        this.Pass = pass;
     }
 
     public String getMaNV() {

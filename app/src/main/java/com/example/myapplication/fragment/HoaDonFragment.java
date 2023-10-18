@@ -95,13 +95,13 @@ public class HoaDonFragment extends Fragment implements View.OnClickListener{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_hd,null);
-        TextView tv_maHd,tv_tongtien, tv_ngaymua;
-
-        tv_ngaymua = v.findViewById(R.id.DAL_HD_ngaymua);
-        tv_tongtien = v.findViewById(R.id.DAL_HD_TongTien);
+        TextView tv_tongtien, tv_ngaymua;
         spn_tenTV = v.findViewById(R.id.DAL_HD_TV);
         spn_tenSp = v.findViewById(R.id.DAL_HD_SP);
-        thanhVienDAO = new ThanhVIenDAO(getActivity());
+        tv_ngaymua = v.findViewById(R.id.DAL_HD_ngaymua);
+        tv_tongtien = v.findViewById(R.id.DAL_HD_TongTien);
+
+        thanhVienDAO = new ThanhVIenDAO(getContext());
         spDAO = new SanPhamDAO(getActivity());
         List<String> tenTV = new ArrayList<>();
         for(ThanhVien thanhVien : thanhVienDAO.getAllThanhVien()) {
@@ -134,7 +134,6 @@ public class HoaDonFragment extends Fragment implements View.OnClickListener{
             HoaDon hoaDon = new HoaDon();
             hoaDon.setMaTV(split(spn_tenTV));
             hoaDon.setMaSP(split(spn_tenSp));
-
             hoaDon.setTongTien(Integer.parseInt(tv_tongtien.getText().toString()));
             hoaDon.setNgayMua(new Date());
             int kq = hoadonDAO.Insert(hoaDon);

@@ -42,10 +42,10 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
     public void setData(ArrayList<SanPham> arrayList){
         this.arrayList = arrayList;
         this.listSP = arrayList;
-        notifyDataSetChanged();
+
         sanPhamDAO = new SanPhamDAO(context);
         loaiSanPhamDAO = new LoaiSanPhamDAO(context);
-
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -63,12 +63,12 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
             return;
         }
 
-        holder.ma.setText("Mã sản phẩm: "+sanPham.getMaSp());
-        holder.ten.setText("Tên sản phẩm: "+sanPham.getTenSP());
-        holder.gia.setText("Giá tiền: "+ sanPham.getGiaSp());
-        LoaiSanPham loaiSP = loaiSanPhamDAO.getID(sanPham.getMaLoaiSp());
 
-        holder.loaiSP.setText("Loại sản phâmr: " + (loaiSP != null ? loaiSP.getTenloai() : "Loại sách không tồn tại"));
+        holder.ma.setText(" Mã sản phẩm  : "+sanPham.getMaSp());
+        holder.ten.setText(" Tên sản phẩm  :"+sanPham.getTenSP());
+        holder.gia.setText(" Giá tiền  :"+ sanPham.getGiaSp());
+        LoaiSanPham loaiSP = loaiSanPhamDAO.getID(sanPham.getMaLoaiSp());
+        holder.loaiSP.setText("Loại sản phẩm  : " + (loaiSP != null ? loaiSP.getTenloai() : "Loại sách không tồn tại"));
         holder.del.setOnClickListener(v -> {
             dialogDelete(sanPham);
         });

@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,11 +50,14 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.HoaDonView
 
     public void setData(ArrayList<HoaDon> arrayList) {
         this.arrayList = arrayList;
-        notifyDataSetChanged();
+
+        for (int i = 0; i < arrayList.size(); i++) {
+            Log.e("HD",arrayList.get(i).toString());
+        }
         hoaDonDAO = new HoaDonDAO(context);
         thanhVienDAO = new ThanhVIenDAO(context);
         sanPhamDAO = new SanPhamDAO(context);
-
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -94,7 +98,6 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.HoaDonView
 
         return 0;
     }
-
     public class  HoaDonViewHolder extends  RecyclerView.ViewHolder{
    private TextView ma , thanhvien , sanpham,tongtien , ngaymua;
    private ImageView del ;
@@ -134,14 +137,12 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.HoaDonView
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_hd, null);
-
-          TextView NgayMua, tongtien,maHD;
+        TextView NgayMua, tongtien,maHD;
         maHD = v.findViewById(R.id.DAL_HD_ma);
-        NgayMua = v.findViewById(R.id.DAL_HD_ngaymua);
-        tongtien = v.findViewById(R.id.DAL_HD_TongTien);
         spn_tenTV = v.findViewById(R.id.DAL_HD_TV);
         spn_tenSP = v.findViewById(R.id.DAL_HD_SP);
-
+        NgayMua = v.findViewById(R.id.DAL_HD_ngaymua);
+        tongtien = v.findViewById(R.id.DAL_HD_TongTien);
         thanhVienDAO = new ThanhVIenDAO(context);
         sanPhamDAO = new SanPhamDAO(context);
 
@@ -153,28 +154,25 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.HoaDonView
         }
         Spn_Adapter(spn_tenTV, tenTV);
 
-
-
-
+        for (int i = 0; i < tenTV.size(); i++) {
+            String chuoi = tenTV.get(i); // co van de
+            String[] chuoi2 = chuoi.split("\\.");
+            if (HD.getMaTV() == Integer.parseInt(chuoi2[0])) {
+                spn_tenTV.setSelection(i);
+            }
+        }
         List<String> sanpham = new ArrayList<>();
         for (SanPham listSP : sanPhamDAO.getAllSP()) {
             sanpham.add(listSP.getMaSp() + "." + listSP.getTenSP());
         }
         Spn_Adapter(spn_tenSP, sanpham);
 
-        for (int i = 0; i < tenTV.size(); i++) {
-            String chuoi = tenTV.get(i);
-            String[] chuoi2 = chuoi.split("\\.");
-            if (HD.getMaTV() == Integer.parseInt(chuoi2[0])) {
-                spn_tenTV.setSelection(i);
-            }
-        }
-
         for (int i = 0; i < sanpham.size(); i++) {
-            String chuoi = sanpham.get(i);
+            String chuoi = sanpham.get(i);//co
             String[] chuoi2 = chuoi.split("\\.");
             if (HD.getMaSP() == Integer.parseInt(chuoi2[0])) {
                 spn_tenSP.setSelection(i);
+
             }
         }
         NgayMua.setText("Ngày thuê: " + new SimpleDateFormat("dd/MM/yyyy").format(HD.getNgayMua()));
@@ -184,7 +182,6 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.HoaDonView
                 SanPham sp1 = sanPhamDAO.getID(split(spn_tenSP));
                 tongtien.setText(String.valueOf(sp1.getGiaSp()));
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -192,16 +189,15 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.HoaDonView
 
         builder.setView(v);
         AlertDialog alertDialog = builder.create();
-
         v.findViewById(R.id.DAL_HD_save).setOnClickListener(v1 -> {
             hoaDonDAO = new HoaDonDAO(context);
             HD.setMaTV(split(spn_tenTV));
-            HD.setMaHD(split(spn_tenSP));
+            HD.setMaSP(split(spn_tenSP));
             HD.setTongTien(Integer.parseInt(tongtien.getText().toString()));
             HD.setNgayMua(new Date());
-
-
+            Log.e("EM en dung nhieu Log.e ", HD.toString());
             int kq = hoaDonDAO.update(HD);
+
             if (kq == -1) {
                 Toast.makeText(context, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
             }
@@ -229,9 +225,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.HoaDonView
     }
 
     public int split(Spinner spn) {
-//        String chuoi = (String) spn.getSelectedItem();
-//        String[] chuoi2 = chuoi.split("\\.");
-//        return Integer.parseInt(chuoi2[0]);
+
         if (spn.getSelectedItem() != null) {
             String chuoi = (String) spn.getSelectedItem();
             String[] chuoi2 = chuoi.split("\\.");

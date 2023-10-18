@@ -51,10 +51,10 @@ public class NhanVienDAO {
     }
     public int update(NhanVien NV){
         ContentValues values = new ContentValues();
-
+        values.put("maNV",NV.getMaNV());
         values.put("tenNV",NV.getTenNV());
         values.put("pass",NV.getPass());
-        int kq = database.update("NHANVIEN",values,"tenNV=?",new String[]{String.valueOf(NV.getMaNV())});
+        int kq = database.update("NHANVIEN",values,"maNV=?",new String[]{String.valueOf(NV.getMaNV())});
         if(kq<=0){
             return -1;
         }

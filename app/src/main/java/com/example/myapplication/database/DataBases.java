@@ -31,7 +31,7 @@ public class DataBases extends SQLiteOpenHelper {
             "hoTen TEXT not null ," +
             "namSinh TEXT not null );";
     public  static  final  String NhanVien = "create table NHANVIEN (" +
-            "maNV TEXT primary key  ," +
+            "maNV TEXT primary key," +
             "tenNV TEXT not null," +
             "pass TEXT not null )";
     public  static  final  String NHANVIEN_INSERT = "INSERT INTO NHANVIEN(maNV,tenNV,pass)VALUES\n"+
