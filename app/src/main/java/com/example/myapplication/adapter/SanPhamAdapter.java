@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +39,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
     private ArrayList<SanPham> arrayList;
     private LoaiSanPhamDAO loaiSanPhamDAO;
     private SanPhamDAO sanPhamDAO;
+    private ImageView img ;
     public SanPhamAdapter(Context context) {
         this.context = context;
     }
@@ -52,7 +56,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
     @Override
     public SPViewHodelder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_sanpham,parent,false);
-
         return new SPViewHodelder(view);
     }
 
@@ -62,8 +65,6 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
         if(sanPham == null){
             return;
         }
-
-
         holder.ma.setText(" Mã sản phẩm  : "+sanPham.getMaSp());
         holder.ten.setText(" Tên sản phẩm  :"+sanPham.getTenSP());
         holder.gia.setText(" Giá tiền  :"+ sanPham.getGiaSp());
@@ -81,6 +82,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
             } else {
                 dialogUpdate(sanPham);
             }
+
         });
     }
 
@@ -94,9 +96,10 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
 
     public  class  SPViewHodelder extends RecyclerView.ViewHolder {
         private TextView ma ,ten, gia , loaiSP;
-        private ImageView del;
+        private ImageView img,del;
         public SPViewHodelder(@NonNull View itemView) {
             super(itemView);
+            img =itemView.findViewById(R.id.item_sp_img);
             ma = itemView.findViewById(R.id.item_sp_ma);
             ten = itemView.findViewById(R.id.item_sp_ten);
             gia = itemView.findViewById(R.id.item_sp_gia);
@@ -130,6 +133,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
         EditText ed_maSP,ed_tenSP,ed_giaSP;
         Spinner spn_loaiSP;
         Button btn_luu,btn_huy;
+        ImageView imageView ;
+
+//        imageView =v.findViewById(R.id.DAL_SP_img);
         ed_maSP = v.findViewById(R.id.DAL_SP_ma);
         ed_tenSP = v.findViewById(R.id.DAL_SP_ten);
         ed_giaSP = v.findViewById(R.id.DAL_SP_gia);
@@ -162,6 +168,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
         btn_luu.setOnClickListener(v1 -> {
             String LoaiSach = (String)spn_loaiSP.getSelectedItem();
             String[] maloai= LoaiSach.split("\\.");
+
             sanPham.setTenSP(ed_tenSP.getText().toString());
             sanPham.setGiaSp(Integer.parseInt(ed_giaSP.getText().toString()));
             sanPham.setMaLoaiSp(Integer.parseInt(maloai[0]));

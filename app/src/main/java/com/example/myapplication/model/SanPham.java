@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class SanPham {
     private int maSp;
+
     private String tenSP;
     private int giaSp;
     private int maLoaiSp;
@@ -21,6 +22,10 @@ public class SanPham {
 
 
     }
+
+
+
+
 
     public int getMaSp() {
         return maSp;
@@ -53,6 +58,7 @@ public class SanPham {
     public void setMaLoaiSp(int maLoaiSp) {
         this.maLoaiSp = maLoaiSp;
     }
+
 
 
 

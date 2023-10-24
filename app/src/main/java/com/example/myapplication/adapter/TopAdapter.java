@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,15 +48,17 @@ public class TopAdapter extends RecyclerView.Adapter<TopAdapter.TopViewHolder> {
     @Override
     public int getItemCount() {
         if (arrayList != null){
-            return  arrayList.size();
+            return arrayList.size();
         }
         return 0;
     }
 
     public  class  TopViewHolder extends RecyclerView.ViewHolder {
         private TextView ma , ten , gia;
+        private ImageView imageView;
         public TopViewHolder(@NonNull View itemView) {
             super(itemView);
+
             ma = itemView.findViewById(R.id.tv_top10_maSP);
             ten = itemView.findViewById(R.id.tv_top10_tenSP);
             gia = itemView.findViewById(R.id.tv_top10_gia);

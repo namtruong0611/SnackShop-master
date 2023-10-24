@@ -5,6 +5,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/DAL_SP_img"
+        android:src="@drawable/logooooo"
+        android:layout_width="150dp"
+        android:layout_height="140dp">
+    </ImageView>
     <EditText
         android:layout_marginTop="7dp"
         android:id="@+id/DAL_SP_ma"

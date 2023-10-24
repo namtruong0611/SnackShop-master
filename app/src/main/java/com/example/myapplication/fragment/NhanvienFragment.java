@@ -66,6 +66,10 @@ public class NhanvienFragment extends Fragment implements  View.OnClickListener{
         actionButton.setOnClickListener(this::onClick);
     }
 
+
+
+
+
     public void Dialog_NV() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater layoutInflater = getLayoutInflater();

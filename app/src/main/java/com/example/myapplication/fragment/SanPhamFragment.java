@@ -1,8 +1,10 @@
 package com.example.myapplication.fragment;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -24,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.adapter.SanPhamAdapter;
 import com.example.myapplication.database.LoaiSanPhamDAO;
@@ -32,6 +37,7 @@ import com.example.myapplication.model.LoaiSanPham;
 import com.example.myapplication.model.SanPham;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +51,13 @@ public class SanPhamFragment extends Fragment implements View.OnClickListener{
     private SanPhamAdapter adapter;
     private LoaiSanPhamDAO loaiSanPhamDAO;
     private ArrayList<SanPham> list = new ArrayList<>();
+    private static final int SELECT_IMAGE = 100;
+    private ImageView img ;
 
     EditText ed_timKiem;
     Button bnt_timKiem;
+
+
 
     public SanPhamFragment() {
         // Required empty public constructor
@@ -99,6 +109,7 @@ public class SanPhamFragment extends Fragment implements View.OnClickListener{
         EditText ed_tenSp,ed_giaSp;
         Spinner spn_loaiSp;
         Button btn_luu,btn_huy;
+        img = v.findViewById(R.id.DAL_SP_img);
         ed_tenSp = v.findViewById(R.id.DAL_SP_ten);
         ed_giaSp = v.findViewById(R.id.DAL_SP_gia);
         spn_loaiSp = v.findViewById(R.id.DAL_SP_spin);
@@ -113,6 +124,11 @@ public class SanPhamFragment extends Fragment implements View.OnClickListener{
         spn_loaiSp.setAdapter(adapterLoaiSp);
         builder.setView(v);
         AlertDialog alertDialog = builder.create();
+        img.setOnClickListener(v2->{
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent,SELECT_IMAGE);
+        });
+
         btn_luu.setOnClickListener(v1 -> {
             if(ed_tenSp.length() ==0 || ed_giaSp.length()==0) {
                 Toast.makeText(getActivity(), "Không để trống", Toast.LENGTH_SHORT).show();
@@ -120,6 +136,7 @@ public class SanPhamFragment extends Fragment implements View.OnClickListener{
                 SanPham sp = new SanPham();
                 String LoaiSp = (String) spn_loaiSp.getSelectedItem();
                 if (LoaiSp != null) {
+
                     String[] maloai = LoaiSp.split("\\.");
                     sp.setTenSP(ed_tenSp.getText().toString());
                     sp.setGiaSp(Integer.parseInt(ed_giaSp.getText().toString()));
@@ -145,8 +162,18 @@ public class SanPhamFragment extends Fragment implements View.OnClickListener{
             alertDialog.cancel();
         });
         alertDialog.show();
-    }
 
+
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == SELECT_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            Uri uri = data.getData();
+            img.setImageURI(uri);
+        }
+    }
 
     @Override
     public void onResume() {
@@ -160,6 +187,7 @@ public class SanPhamFragment extends Fragment implements View.OnClickListener{
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
 
+
     }
 
     @Override
@@ -170,4 +198,7 @@ public class SanPhamFragment extends Fragment implements View.OnClickListener{
                 break;
         }
     }
+
+
+
 }
