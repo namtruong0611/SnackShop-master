@@ -71,10 +71,10 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
 
     public class  NhanVienViewHolder extends RecyclerView.ViewHolder {
          private  TextView ma , ten , pass ;
-         private  ImageView del;
+         private  ImageView img,del;
         public NhanVienViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            img = itemView.findViewById(R.id.item_nv_img);
             ma = itemView.findViewById(R.id.NV_Ma);
             ten = itemView.findViewById(R.id.NV_ten);
             pass = itemView.findViewById(R.id.NV_Pass);
@@ -107,6 +107,7 @@ public class NhanVienAdapter extends RecyclerView.Adapter<NhanVienAdapter.NhanVi
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_nv,null);
+        ImageView img = v.findViewById(R.id.DAL_NV_img);
         EditText ed_maNV = v.findViewById(R.id.DAL_NV_ma);
         EditText ed_tenNV = v.findViewById(R.id.DAL_NV_ten);
         EditText ed_pass = v.findViewById(R.id.DAL_NV_pass);

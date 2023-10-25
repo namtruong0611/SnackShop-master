@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     >
 <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/item_nv_img"
+        android:src="@drawable/profile"
+        android:layout_width="130dp"
+        android:layout_height="130dp">
+
+    </ImageView>
     <LinearLayout
         android:layout_gravity="center_vertical"
-        android:layout_width="210dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="10">
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content">
+
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:text="Mã :"/>
+                android:text="Mã :"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/NV_Ma"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:text="1:"
                 android:textSize="20sp" />
@@ -42,7 +50,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
 
                 android:layout_marginLeft="10dp"
                 android:textSize="20sp"
@@ -50,7 +58,7 @@
                 android:text="Tên:"/>
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:id="@+id/NV_ten"
                 android:layout_marginLeft="10dp"
                 android:textSize="20sp"
@@ -66,7 +74,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -76,7 +84,7 @@
             <TextView
                 android:id="@+id/NV_Pass"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:text="Pass:"
                 android:textSize="20sp" />
@@ -89,8 +97,8 @@
     <ImageView
         android:layout_gravity="center"
         android:id="@+id/imgDeleteTV"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_weight="1"
         android:src="@drawable/baseline_delete_24" />
 

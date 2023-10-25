@@ -48,10 +48,10 @@ public class DoiMkFragment extends Fragment {
                 nv.setPass(edMKmoi.getText().toString());
                 int kq = nhanVienDAO.update(nv);
                 if (kq == -1) {
-                    Toast.makeText(getActivity(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Đổi mật khẩu thất bại", Toast.LENGTH_SHORT).show();
                 }
                 if (kq == 1) {
-                    Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                 }
             }
             else if(edMkcu.length() ==0|| edMKmoi.length()==0||ednhapLaiMK.length() == 0){
@@ -61,7 +61,7 @@ public class DoiMkFragment extends Fragment {
             }
         });
         view.findViewById(R.id.btn_doiMK_huy).setOnClickListener(v -> {
-                System.exit(0);
+               getActivity().onVisibleBehindCanceled();
         });
     }
 }

@@ -1,5 +1,8 @@
 package com.example.myapplication.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,11 +12,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -28,8 +33,11 @@ import java.util.ArrayList;
 public class NhanvienFragment extends Fragment implements  View.OnClickListener{
     private RecyclerView recyclerView;
     private FloatingActionButton actionButton;
+    private ImageView img ;
     private NhanVienDAO nhanVienDAO;
     private NhanVienAdapter adapter;
+    private static final int SELECT_IMAGE = 100;
+
     private ArrayList<NhanVien> list = new ArrayList<>();
     ;
 
@@ -74,11 +82,16 @@ public class NhanvienFragment extends Fragment implements  View.OnClickListener{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater layoutInflater = getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.dialog_nv, null);
+        img =  view.findViewById(R.id.DAL_NV_img);
         EditText maNV = view.findViewById(R.id.DAL_NV_ma);
         EditText tennv = view.findViewById(R.id.DAL_NV_ten);
         EditText pass = view.findViewById(R.id.DAL_NV_pass);
         builder.setView(view);
         AlertDialog alertDialog = builder.create();
+        img.setOnClickListener(v2 ->{
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent,SELECT_IMAGE);
+        });
         view.findViewById(R.id.btn_nv_save).setOnClickListener(v -> {
             nhanVienDAO = new NhanVienDAO(getActivity());
             NhanVien nhanVien = new NhanVien();
@@ -114,7 +127,15 @@ public class NhanvienFragment extends Fragment implements  View.OnClickListener{
 
 
      }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == SELECT_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            Uri uri = data.getData();
+            img.setImageURI(uri);
+        }
+    }
     @Override
     public void onClick(View view) {
            switch (view.getId()){

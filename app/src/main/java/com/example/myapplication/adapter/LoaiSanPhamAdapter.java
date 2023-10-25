@@ -70,9 +70,10 @@ return  arrayList.size();
 
     public  class  LoaiSPViewHolder extends RecyclerView.ViewHolder {
         private TextView ma , ten;
-        private ImageView del ;
+        private ImageView img,del ;
         public LoaiSPViewHolder(@NonNull View itemView) {
             super(itemView);
+            img = itemView.findViewById(R.id.item_loaisp_img);
             ma = itemView.findViewById(R.id.LSP_ma);
             ten = itemView.findViewById(R.id.LSP_ten);
             del = itemView.findViewById(R.id.LSP_del);
@@ -103,6 +104,7 @@ return  arrayList.size();
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_lsp,null);
+        ImageView img = v.findViewById(R.id.DAL_LSP_img);
         EditText ed_tenLoai = v.findViewById(R.id.DAL_LSP_Ten);
         EditText ed_maLoai = v.findViewById(R.id.DAL_LSP_Ma);
         ed_maLoai.setText(String.valueOf(lsp.getMaloai()));

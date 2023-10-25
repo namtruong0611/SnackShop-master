@@ -75,9 +75,10 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.Than
 
     public  class  ThanhvienViewHolder extends RecyclerView.ViewHolder {
         private TextView ma , ten , namsinh ;
-        private ImageView del;
+        private ImageView img ,del;
         public ThanhvienViewHolder(@NonNull View itemView) {
             super(itemView);
+            img = itemView.findViewById(R.id.item_tv_img);
             ma = itemView.findViewById(R.id.item_tv_Ma);
             ten = itemView.findViewById(R.id.item_tv_ten);
             namsinh = itemView.findViewById(R.id.item_tv_namsinh);
@@ -108,6 +109,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.Than
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_tv,null);
+        ImageView img = v.findViewById(R.id.DAL_TV_img);
         EditText ed_maTV = v.findViewById(R.id.DAL_TV_ma);
         EditText ed_tenTV = v.findViewById(R.id.DAL_TV_ten);
         EditText ed_ngaySinh = v.findViewById(R.id.DAL_TV_namsinh);

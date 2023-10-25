@@ -5,6 +5,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ImageView
+        android:src="@drawable/profile"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/DAL_NV_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"></ImageView>
+
     <EditText
         android:id="@+id/DAL_NV_ma"
          android:hint="ma"

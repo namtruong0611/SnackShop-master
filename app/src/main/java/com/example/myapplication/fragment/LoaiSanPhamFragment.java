@@ -1,7 +1,10 @@
 package com.example.myapplication.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,10 +13,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -32,6 +37,8 @@ public class LoaiSanPhamFragment extends Fragment implements View.OnClickListene
     private FloatingActionButton actionButton;
     private LoaiSanPhamDAO loaiSpDAO;
     private LoaiSanPhamAdapter adapter;
+    private ImageView img;
+    private static final int SELECT_IMAGE = 100;
     private ArrayList<LoaiSanPham> list = new ArrayList<>();
     private Context context;
     public LoaiSanPhamFragment() {
@@ -64,9 +71,14 @@ public class LoaiSanPhamFragment extends Fragment implements View.OnClickListene
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_lsp,null);
+         img =  v.findViewById(R.id.DAL_LSP_img);
         EditText ed_tenLoai = v.findViewById(R.id.DAL_LSP_Ten);
         builder.setView(v);
         AlertDialog alertDialog = builder.create();
+       img.setOnClickListener(v2 ->{
+           Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+           startActivityForResult(intent,SELECT_IMAGE);
+       });
         v.findViewById(R.id.btn_lsp_save).setOnClickListener(v1 ->{
             loaiSpDAO = new LoaiSanPhamDAO(getActivity());
             LoaiSanPham loaiSp = new LoaiSanPham();
@@ -86,6 +98,15 @@ public class LoaiSanPhamFragment extends Fragment implements View.OnClickListene
         });
 
         alertDialog.show();
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == SELECT_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            Uri uri = data.getData();
+            img.setImageURI(uri);
+        }
     }
 
     @Override

@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -135,7 +137,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
         Button btn_luu,btn_huy;
         ImageView imageView ;
 
-//        imageView =v.findViewById(R.id.DAL_SP_img);
+        imageView =v.findViewById(R.id.DAL_SP_img);
         ed_maSP = v.findViewById(R.id.DAL_SP_ma);
         ed_tenSP = v.findViewById(R.id.DAL_SP_ten);
         ed_giaSP = v.findViewById(R.id.DAL_SP_gia);
@@ -189,6 +191,9 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SPViewHo
         alertDialog.show();
 
     }
+
+
+
     @Override
     public Filter getFilter() {
         return new Filter() {

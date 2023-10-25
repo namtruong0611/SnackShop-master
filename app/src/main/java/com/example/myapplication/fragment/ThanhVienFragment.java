@@ -1,8 +1,11 @@
 package com.example.myapplication.fragment;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,12 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -34,6 +39,8 @@ public class ThanhVienFragment extends Fragment implements View.OnClickListener{
 
     private RecyclerView recyclerView;
     private FloatingActionButton actionButton;
+    private ImageView img ;
+    private static final int SELECT_IMAGE = 100;
     private ArrayList<ThanhVien> list = new ArrayList<>();
     private ThanhVienAdapter adapter;
     private ThanhVIenDAO thanhVienDAO;
@@ -67,6 +74,7 @@ public class ThanhVienFragment extends Fragment implements View.OnClickListener{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_tv,null);
+        img = v.findViewById(R.id.DAL_TV_img);
         EditText ed_tenTV = v.findViewById(R.id.DAL_TV_ten);
         EditText ed_namSinh = v.findViewById(R.id.DAL_TV_namsinh);
 
@@ -80,6 +88,10 @@ public class ThanhVienFragment extends Fragment implements View.OnClickListener{
         month = calendar.get(Calendar.MONTH);
         year = calendar.get(Calendar.YEAR);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        img.setOnClickListener(v2 ->{
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent,SELECT_IMAGE);
+        });
         ed_namSinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,7 +145,15 @@ public class ThanhVienFragment extends Fragment implements View.OnClickListener{
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
     }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == SELECT_IMAGE && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
+            Uri uri = data.getData();
+            img.setImageURI(uri);
+        }
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()){

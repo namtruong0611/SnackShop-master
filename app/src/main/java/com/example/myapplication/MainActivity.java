@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.ql_snapham) {
+        if (id == R.id.ql_sanpham) {
             toolbar.setTitle("Sản phẩm");
             replaceFragment(new SanPhamFragment());
         } else if (id == R.id.ql_loaiSp) {

@@ -9,7 +9,7 @@
     <ImageView
         android:layout_gravity="center_horizontal"
         android:id="@+id/DAL_SP_img"
-        android:src="@drawable/logooooo"
+        android:src="@drawable/bimbim"
         android:layout_width="150dp"
         android:layout_height="140dp">
     </ImageView>
