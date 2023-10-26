@@ -93,18 +93,24 @@ public class NhanvienFragment extends Fragment implements  View.OnClickListener{
             startActivityForResult(intent,SELECT_IMAGE);
         });
         view.findViewById(R.id.btn_nv_save).setOnClickListener(v -> {
-            nhanVienDAO = new NhanVienDAO(getActivity());
-            NhanVien nhanVien = new NhanVien();
-            nhanVien.setMaNV(maNV.getText().toString());
-            nhanVien.setTenNV(tennv.getText().toString());
-            nhanVien.setPass(pass.getText().toString());
-            int kq = nhanVienDAO.Insert(nhanVien);
-            if (kq == -1) {
-                Toast.makeText(getActivity(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+            if (tennv.length() == 0 || pass.length() == 0 || maNV.length() == 0 ){
+                Toast.makeText(getActivity(), "Không được để trống", Toast.LENGTH_SHORT).show();
             }
-            if (kq == 1) {
-                Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-                Log.e("nhanvien",""+list.size());
+            else {
+
+                nhanVienDAO = new NhanVienDAO(getActivity());
+                NhanVien nhanVien = new NhanVien();
+                nhanVien.setMaNV(maNV.getText().toString());
+                nhanVien.setTenNV(tennv.getText().toString());
+                nhanVien.setPass(pass.getText().toString());
+                int kq = nhanVienDAO.Insert(nhanVien);
+                if (kq == -1) {
+                    Toast.makeText(getActivity(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                }
+                if (kq == 1) {
+                    Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    Log.e("nhanvien",""+list.size());
+                }
             }
             onResume();
             alertDialog.cancel();
