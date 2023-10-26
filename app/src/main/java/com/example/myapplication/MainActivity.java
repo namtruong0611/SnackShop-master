@@ -71,11 +71,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View header = navigationView.getHeaderView(0);
         tv_header = header.findViewById(R.id.tv_head);
         tv_header.setText(nhanVien.getTenNV());
-        replaceFragment(new HoaDonFragment());
+        replaceFragment(new SanPhamFragment());
         navigationView.setNavigationItemSelectedListener(this);
 
     }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();

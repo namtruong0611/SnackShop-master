@@ -80,16 +80,20 @@ public class LoaiSanPhamFragment extends Fragment implements View.OnClickListene
            startActivityForResult(intent,SELECT_IMAGE);
        });
         v.findViewById(R.id.btn_lsp_save).setOnClickListener(v1 ->{
-            loaiSpDAO = new LoaiSanPhamDAO(getActivity());
-            LoaiSanPham loaiSp = new LoaiSanPham();
-            loaiSp.setTenloai(ed_tenLoai.getText().toString());
-            int kq = loaiSpDAO.Insert(loaiSp);
-            if (kq == -1) {
-                Toast.makeText(getActivity(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
-            }
-            if (kq == 1) {
-                Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-            }
+       if (ed_tenLoai.length() == 0){
+           Toast.makeText(getActivity(), "không được để trống ", Toast.LENGTH_SHORT).show();
+       }else {
+           loaiSpDAO = new LoaiSanPhamDAO(getActivity());
+           LoaiSanPham loaiSp = new LoaiSanPham();
+           loaiSp.setTenloai(ed_tenLoai.getText().toString());
+           int kq = loaiSpDAO.Insert(loaiSp);
+           if (kq == -1) {
+               Toast.makeText(getActivity(), "Thêm thất bại", Toast.LENGTH_SHORT).show();
+           }
+           if (kq == 1) {
+               Toast.makeText(getActivity(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+           }
+       }
             onResume();
             alertDialog.cancel();
         });
