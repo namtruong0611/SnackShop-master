@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="170dp"
     android:orientation="vertical"
     >
 <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="160dp">
     <ImageView
+        android:layout_marginTop="5dp"
         android:id="@+id/item_nv_img"
         android:src="@drawable/profile"
         android:layout_width="130dp"
@@ -17,18 +18,20 @@
     </ImageView>
     <LinearLayout
         android:layout_gravity="center_vertical"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="150dp"
         android:orientation="vertical"
-        android:layout_weight="10">
+       >
         <LinearLayout
+
             android:orientation="horizontal"
-            android:layout_width="50dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <TextView
+                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
                 android:text="Mã :"
                 android:textSize="20sp"
@@ -36,11 +39,15 @@
 
             <TextView
                 android:id="@+id/NV_Ma"
+                android:layout_marginTop="5dp"
                 android:layout_width="170dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
-                android:text="1:"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:text="nhân viên "
+                android:textSize="20sp"
+
+                 />
+
         </LinearLayout>
 
 
@@ -49,6 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
 
@@ -57,6 +65,7 @@
                 android:textStyle="bold"
                 android:text="Tên:"/>
             <TextView
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:id="@+id/NV_ten"
@@ -73,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <TextView
+                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginLeft="10dp"
@@ -82,6 +92,7 @@
                 />
 
             <TextView
+                android:layout_marginTop="5dp"
                 android:id="@+id/NV_Pass"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
